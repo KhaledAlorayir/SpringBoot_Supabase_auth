@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: ${db_url}
+    username: ${db_user}
+    password: ${db_password}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate
+server:
+  error:
+    include-message: ALWAYS
+    include-stacktrace: never
