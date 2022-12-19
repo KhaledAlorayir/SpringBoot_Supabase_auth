@@ -12,11 +12,10 @@ import org.springframework.web.reactive.function.client.support.WebClientAdapter
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 @Configuration
-@RequiredArgsConstructor
 public class WebConfig {
 
     @Value("${supabase_admin_key}")
-    private final String SUPABASE_ADMIN_KEY;
+    private String SUPABASE_ADMIN_KEY;
 
     @Bean
     WebClient webClient(ObjectMapper objectMapper) {

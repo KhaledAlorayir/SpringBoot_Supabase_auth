@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,7 +29,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests((auth) -> {
                     try{
                         auth
-                                .requestMatchers("/api/post/no").authenticated()
+                                .requestMatchers(HttpMethod.GET,"/api/post/*").permitAll()
+                                .requestMatchers("/api/post","/api/post/**").authenticated()
+                                .requestMatchers("/api/comment/**").authenticated()
                                 .anyRequest()
                                 .permitAll()
                                 .and()

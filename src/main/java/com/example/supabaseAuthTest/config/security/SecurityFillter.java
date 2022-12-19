@@ -38,6 +38,10 @@ public class SecurityFillter extends OncePerRequestFilter {
         /*
         * right here we extracted the token coming from the frontend and sending it to supabase's API to verify it and get the user info
         * another option is instead of using the supabase API, we could have decoded it and verified it here (the JWT secret is given by supabase), this option might be better because we don't need to make a request to supabase
+        *
+        * of course for a legit project we would create another table ("profile") and use it as the main table to interact with the user
+        * we could set a trigger in supabase that insert the user to the profile table each time a new user signs up
+        *
         * */
         try {
             UserDTO user = userClient.getUser(token);
